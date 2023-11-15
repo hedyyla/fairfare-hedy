@@ -3,7 +3,7 @@
   <div class="manual-input container">
 
     <div class="container" >
-      <%= link_to "Back", select_split_bills_path %>
+      <%= link_to "Back", select_split_bills_path, class: "btn red-button" %>
     </div >
     <div class="text-center manual-input-header">
       <h1 class="purple-text"><%= @split.name.capitalize %></h1>
@@ -14,7 +14,7 @@
         <%= f.input :merchant %>
         <%= f.input :date %>
 
-        <div class="items" data-controller="bills-manual-input">
+        <div class="items" data-controller="bills-manual-input" data-bills-manual-input-target="itemsFieldElement">
           <%= f.simple_fields_for(:items) do |ff| %>
 
             <div class="align-items-center" data-bills-manual-input-target="addInputElement">
