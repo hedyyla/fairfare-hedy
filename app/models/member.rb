@@ -110,7 +110,7 @@ class Member < ApplicationRecord
   def amount_paid(bill)
     return 0 unless bill.payers.map(&:member).include? self
 
-    bill.total_amount / bill.payers.count unless bill.payers.count = 0
+    bill.total_amount / bill.payers.count unless bill.payers.count == 0
   end
 
   def total_consumed(bill)
