@@ -54,27 +54,28 @@
 
 <div class="container mt-5 px-7">
   <h4>Transactions</h4>
+  <% @splits = current_user.member.splits %>
   <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" style="border:none; border-radius:5px; color:#4D455D" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
 
-            <p class="split"><%= Split.accordion_split(-1) %></p>
+            <p class="split"><%= @splits.accordion_split(-1) %></p>
 
         </button>
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-          <% if Split.accordion_bills(-1).nil? %>
+          <% if @splits.accordion_bills(-1).nil? %>
               <div>
                 <i class="fa-solid fa-receipt"></i>
                 <%= "No Bills Found" %>
               </div>
               <% else %>
-              <% Split.accordion_bills(-1).each do |bill| %>
+              <% @splits.accordion_bills(-1).each do |bill| %>
               <div>
                 <i class="fa-solid fa-receipt purple-color-text"></i>
-                <%= link_to "#{bill.merchant}", split_bill_path(Split.split_sort[-1], bill), class:"text-decoration-none purple-color-text" %>
+                <%= link_to "#{bill.merchant}", split_bill_path(@splits.split_sort[-1], bill), class:"text-decoration-none purple-color-text" %>
               </div>
             <% end %>
             <% end %>
@@ -84,21 +85,21 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" style="border:none; border-radius:5px; color:#4D455D" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          <p class="split"><%= Split.accordion_split(-2) %></p>
+          <p class="split"><%= @splits.accordion_split(-2) %></p>
         </button>
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-            <% if Split.accordion_bills(-2).nil? %>
+            <% if @splits.accordion_bills(-2).nil? %>
               <div>
                 <i class="fa-solid fa-receipt purple-color-text"></i>
                 <%= "No Bills Found" %>
               </div>
               <% else %>
-              <% Split.accordion_bills(-2).each do |bill| %>
+              <% @splits.accordion_bills(-2).each do |bill| %>
               <div>
                 <i class="fa-solid fa-receipt"></i>
-                <%= link_to "#{bill.merchant}", split_bill_path(Split.split_sort[-2], bill), class:"text-decoration-none purple-color-text" %>
+                <%= link_to "#{bill.merchant}", split_bill_path(@splits.split_sort[-2], bill), class:"text-decoration-none purple-color-text" %>
               </div>
             <% end %>
             <% end %>
@@ -109,24 +110,25 @@
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" style="border:none; border-radius:5px; color:#4D455D" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
 
-          <p class="split"><%= Split.accordion_split(-3) %></p>
+          <p class="split"><%= @splits.accordion_split(-3) %></p>
         </button>
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-            <% if Split.accordion_bills(-3).nil? %>
+            <% if @splits.accordion_bills(-3).nil? %>
               <div>
                 <i class="fa-solid fa-receipt purple-color-text"></i>
                 <%= "No Bills Found" %>
               </div>
               <% else %>
-              <% Split.accordion_bills(-3).each do |bill| %>
+              <% @splits.accordion_bills(-3).each do |bill| %>
               <div>
                 <i class="fa-solid fa-receipt"></i>
-                <%= link_to "#{bill.merchant}", split_bill_path(Split.split_sort[-3], bill), class:"text-decoration-none purple-color-text" %>
+                <%= link_to "#{bill.merchant}", split_bill_path(@splits.split_sort[-3], bill), class:"text-decoration-none purple-color-text" %>
               </div>
             <% end %>
             <% end %>
+            <%# <% raise %>
         </div>
       </div>
     </div>
